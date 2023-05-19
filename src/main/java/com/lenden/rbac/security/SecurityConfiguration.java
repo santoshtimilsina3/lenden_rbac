@@ -31,8 +31,7 @@ public class SecurityConfiguration {
         .authorizeHttpRequests()
         .requestMatchers(
                 "/api/v1/auth/**",
-                "/signup"
-
+                "/signup","/signin"
         )
           .permitAll()
 
