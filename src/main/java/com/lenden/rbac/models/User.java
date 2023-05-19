@@ -29,7 +29,7 @@ public class User implements UserDetails {
   String email;
   String password ;
 
-  @ManyToMany(fetch = FetchType.EAGER)
+  @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
   List<Role> roles ;
 
 

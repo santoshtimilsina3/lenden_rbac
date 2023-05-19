@@ -29,7 +29,7 @@ public class Role {
         RoleName roleName ;
 
 
-        @OneToMany(cascade = CascadeType.ALL)
+        @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
         List<Authorities> authorities;
 
         public Role (RoleName roleName) {this.roleName = roleName;}

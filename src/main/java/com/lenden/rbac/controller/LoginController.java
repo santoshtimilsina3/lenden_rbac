@@ -99,6 +99,7 @@ public class LoginController {
 
         User users = userRepository.save(user);
         String token = jaJwtService.generateToken(users);
+
         Token token1 = new Token();
         token1.user = users;
         token1.expired = false;
