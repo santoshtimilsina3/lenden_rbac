@@ -41,17 +41,20 @@ public class JwtService {
 
         List<String> authority = new ArrayList<>();
         List<Role> role = userDetails.getRoles();
+        List<String> roles = new ArrayList<>();
+
+        Map<String, List<String>> a = new HashMap<>();
+        List<String> authorities11 = new ArrayList<>();
         AtomicReference<List<Authorities>> authorities = new AtomicReference<>();
         List<Authorities> authorities1 = new ArrayList<>();
         role.forEach(role1 -> {
                     role1.getAuthorities().forEach(authorities2 -> {
-                        authorities1.add(authorities2);
+                        authorities11.add(authorities2.getPermission().toString());
                     });
+                    a.put(role1.getRoleName(), authorities11);
                 }
         );
-        authorities1.forEach(authoritie -> {
-            claim.put(authoritie.getPermission().toString(), "authority");
-        });
+        claim.put("Role", a);
 
         return generateToken(claim, userDetails);
     }
